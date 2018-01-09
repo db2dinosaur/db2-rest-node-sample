@@ -1,0 +1,14 @@
+{
+  "name": "servtls",
+  "version": "0.1.0",
+  "description": "DB2 for zOS Phone Book App using SECPORT (TLS) on DB2 for REST requests",
+  "main": "servTLS.js",
+  "scripts": {
+    "start": "node servTLS.js"
+  },
+  "author": "James Gill",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
