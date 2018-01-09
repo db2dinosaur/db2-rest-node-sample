@@ -8,7 +8,7 @@ var url = require('url');
 var fs = require('fs');
 
 // Config bits for DB2 for z/OS regular DDF port connection and debug
-var host = '192.168.250.17';
+var host = 's0w1.zpdt.local';
 var port = 5041;
 var debug = false;
 
