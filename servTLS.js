@@ -17,7 +17,14 @@ app.use(express.static('public'));
 // what to do if we're asked for root URL - default page
 app.get('/', (req,res) => res.sendFile(path.join(__dirname,'/public/staff.html')));
 // what to do if we're asked for GetDepartments - make a request to DB2 for z/OS REST service
-app.post('/GetDepartments', function (req,res) {
+app.post('/GetDepartments', (req,res) => DoGetDepartments(req,res));
+// what to do if we're asked for GetEmployeesByDepartment:
+app.post('/GetEmployeesByDepartment', (req,res) => DoGetEmployees(req,res));
+// start listening for requests on port 8080
+app.listen(8080, () => console.log('servTLS.js listening on port 8080'));
+
+// GetDepartments request driver
+function DoGetDepartments(req,res) {
 	// create request headers
 	var headers = {
 		  'Content-Type' : 'application/json',
@@ -53,11 +60,9 @@ app.post('/GetDepartments', function (req,res) {
 	});
 	// initiate the request
 	restreq.end();
-});
-// what to do if we're asked for GetEmployeesByDepartment:
-// - make sure we've been passed mgr and dept values
-// - make a request to DB2 for z/OS REST service
-app.post('/GetEmployeesByDepartment', function (req,res) {
+}
+
+function DoGetEmployees(req,res) {
 	// parms supplied in data body, so...
 	var data = "";
 	req.on('data',function(chunk) {
@@ -120,6 +125,4 @@ app.post('/GetEmployeesByDepartment', function (req,res) {
 			restreq.end();
 		}
 	});
-});
-// start listening for requests on port 8080
-app.listen(8080, () => console.log('servTLS.js listening on port 8080'));
+}
