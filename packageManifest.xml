@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="CP037"?>
+<manifest type="MANIFEST_SHIPLIST">
+    <container name="STUHLEJ.DB2.SPSOURCE" type="PDS">
+        <resource name="SP4" type="PDSMember"/>
+    </container>
+</manifest>
